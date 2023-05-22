@@ -23,14 +23,64 @@ class StateProvider extends ConsumerWidget {
               provider.toString(),
             ),
             ElevatedButton(
-                onPressed: () {
-                  ref
-                      .read(numberProvider.notifier)
-                      .update((state) => state + 1);
-                  //state = 선언해둔 provider의 함수, 즉 현재상태 0
-                  //무언가 했을때 실행되는 경우는 read, ui에 반영을 하는 경우는 watch
-                },
-                child: const Text("UP"))
+              onPressed: () {
+                ref.read(numberProvider.notifier).update((state) => state + 1);
+                //state = 선언해둔 provider의 함수, 즉 현재상태 0
+                //무언가 했을때 실행되는 경우는 read, ui에 반영을 하는 경우는 watch
+              },
+              child: const Text("UP"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const _NextScreen(),
+                  ),
+                );
+              },
+              child: const Text("Next"),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _NextScreen extends ConsumerWidget {
+  const _NextScreen();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(numberProvider);
+    return DefaultLayout(
+      title: "StateProvider",
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              provider.toString(),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                ref.read(numberProvider.notifier).update((state) => state + 1);
+                //state = 선언해둔 provider의 함수, 즉 현재상태 0
+                //무언가 했을때 실행되는 경우는 read, ui에 반영을 하는 경우는 watch
+              },
+              child: const Text("UP"),
+            ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.of(context).push(
+            //       MaterialPageRoute(
+            //         builder: (_) => const _NextScreen(),
+            //       ),
+            //     );
+            //   },
+            //   child: const Text("Next"),
+            // )
           ],
         ),
       ),
