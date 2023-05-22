@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpods/layout/defalut_layout.dart';
 import 'package:riverpods/model/shopping_item_model.dart';
-import 'package:riverpods/riverpod/state_notifier_provider_screen.dart';
+import 'package:riverpods/riverpod/state_notifier_provider.dart';
 
 class StateNotifierProviderScreen extends ConsumerWidget {
   const StateNotifierProviderScreen({super.key});
