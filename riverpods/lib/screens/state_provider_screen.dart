@@ -27,8 +27,16 @@ class StateProvider extends ConsumerWidget {
                 ref.read(numberProvider.notifier).update((state) => state + 1);
                 //state = 선언해둔 provider의 함수, 즉 현재상태 0
                 //무언가 했을때 실행되는 경우는 read, ui에 반영을 하는 경우는 watch
+                // 값을 바꿀때는 notifier update
               },
-              child: const Text("UP"),
+              child: const Text("UPUP"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                ref.read(numberProvider.notifier).state =
+                    ref.read(numberProvider.notifier).state - 1;
+              },
+              child: const Text("DOWN"),
             ),
             ElevatedButton(
               onPressed: () {
@@ -39,7 +47,7 @@ class StateProvider extends ConsumerWidget {
                 );
               },
               child: const Text("Next"),
-            )
+            ),
           ],
         ),
       ),
@@ -66,21 +74,9 @@ class _NextScreen extends ConsumerWidget {
             ElevatedButton(
               onPressed: () {
                 ref.read(numberProvider.notifier).update((state) => state + 1);
-                //state = 선언해둔 provider의 함수, 즉 현재상태 0
-                //무언가 했을때 실행되는 경우는 read, ui에 반영을 하는 경우는 watch
               },
               child: const Text("UP"),
             ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     Navigator.of(context).push(
-            //       MaterialPageRoute(
-            //         builder: (_) => const _NextScreen(),
-            //       ),
-            //     );
-            //   },
-            //   child: const Text("Next"),
-            // )
           ],
         ),
       ),
