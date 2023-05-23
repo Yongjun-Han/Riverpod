@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:riverpods/layout/defalut_layout.dart';
+import 'package:riverpods/screens/family_modifier_screen.dart';
 import 'package:riverpods/screens/future_provider_screen.dart';
 import 'package:riverpods/screens/state_notifier_provider.dart';
 import 'package:riverpods/screens/state_provider_screen.dart';
+import 'package:riverpods/screens/stream_provider_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -42,7 +44,27 @@ class HomeScreen extends StatelessWidget {
               );
             },
             child: const Text("FutureProviderScreen"),
-          )
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const StreamProviderScreen(),
+                ),
+              );
+            },
+            child: const Text("StreamProviderScreen"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const FamilyModifierScreen(),
+                ),
+              );
+            },
+            child: const Text("FamilyModifierScreen"),
+          ),
         ],
       ),
     );
