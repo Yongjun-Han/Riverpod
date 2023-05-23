@@ -1,6 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpods/model/shopping_item_model.dart';
 
+final selectProvider = StateNotifierProvider<SelectNotifier, ShoppingItemModel>(
+    //< notifier 의 타입 , notifier 에서 다루는 state 의 타입 >
+    (ref) => SelectNotifier());
+
 class SelectNotifier extends StateNotifier<ShoppingItemModel> {
   SelectNotifier()
       : super(
@@ -13,18 +17,10 @@ class SelectNotifier extends StateNotifier<ShoppingItemModel> {
         );
 
   toggleHasBought() {
-    state = ShoppingItemModel(
-        name: state.name,
-        quantity: state.quantity,
-        hasBought: !state.hasBought,
-        isSpicy: state.isSpicy);
+    state = state.copyWith(hasBought: !state.hasBought);
   }
 
   toggleIsSpicy() {
-    state = ShoppingItemModel(
-        name: state.name,
-        quantity: state.quantity,
-        hasBought: state.hasBought,
-        isSpicy: !state.isSpicy);
+    state = state.copyWith(isSpicy: !state.isSpicy);
   }
 }
